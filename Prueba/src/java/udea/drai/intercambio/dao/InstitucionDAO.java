@@ -26,7 +26,7 @@ public class InstitucionDAO {
     * Metodo que permite agregar una nueva institucion a la base de datos
      * @param inst
     */
-    public void agregarInstitucion(Institucion inst){
+    public int agregarInstitucion(Institucion inst){
         try{
             Connection con = this.conection.getConnection();
             PreparedStatement ps = con.prepareStatement(BDConexion.getStatement("agregarInstitucion"));
@@ -35,9 +35,10 @@ public class InstitucionDAO {
             System.out.println(ps.toString());
             ps.executeUpdate();
             ps.close();
+            return 1;
         }catch(Exception ex){
             System.out.println("Error al ingresar una nueva Institucion! Error: "+ex);
-            return;        
+            return 2;        
         }
     }
     public List<Institucion> getInstituciones(){
@@ -63,21 +64,18 @@ public class InstitucionDAO {
         
     }
     
-    public String eliminarInstitucion(int codigo){
-        String resultado=""; 
+    public int eliminarInstitucion(int codigo){ 
          try{
             Connection con= this.conection.getConnection();
             PreparedStatement ps = con.prepareStatement(BDConexion.getStatement("EliminarInstitucion"));
             System.out.println(ps.toString());
             ps.setInt(1,codigo);
             ps.executeUpdate();
-            resultado="Institución Eliminada Exitosamente";
              System.out.println("Institucion Eliminada exitosamente");
-            return resultado;
+            return 1;
              }catch(SQLException e){
                System.out.println("Error al eliminar la Institucion");  
-               resultado="No se pudo eliminar la institucion con numero de codigo: "+ codigo;
-               return resultado;
+               return 2;
              }
     }
 }

@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import udea.drai.intercambio.dao.InstitucionDAO;
 
 /**
@@ -38,14 +39,23 @@ public class EliminarInstitucionServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+         String url = "./Principal.jsp?respuesta";
         String codigo=request.getParameter("codigo");
         int cod=Integer.parseInt(codigo);
         InstitucionDAO inst= new InstitucionDAO();
-        String respuesta=inst.eliminarInstitucion(cod);
-         request.setAttribute("mensaje",respuesta);         
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/includes/Respuesta.jsp");
-        dispatcher.forward(request, response);
-        processRequest(request, response);
+        int  respuesta=inst.eliminarInstitucion(cod);
+      // RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Principal.jsp?respuesta");
+      //  dispatcher.forward(request, response);
+        if(respuesta==1){
+            url="./Principal.jsp?EICorrectamente";
+            response.setHeader("Location",url);   
+            response.sendRedirect(url);
+        }else{
+            url="./Principal.jsp?EIError";
+            response.setHeader("Location",url);   
+            response.sendRedirect(url);
+        }  
+
     }
 
     /**

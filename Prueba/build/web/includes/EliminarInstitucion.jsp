@@ -21,7 +21,7 @@
                     <h1 class="text-center login-title">Eliminar Institución</h1>
                         <div class="account-wall">
                                 <br>
-                                <form name="eliminar" class="form-signin" action="../EliminarInstitucionServlet" method="post">
+                                <form name="eliminar" class="form-signin" action="../Prueba/EliminarInstitucionServlet" method="post">
                                     <input type="text" class="form-control" placeholder="Codigo de la Institucion" name="codigo" id="codigo" required>
                                      <br>  
                                   <button class="btn btn-lg btn-primary btn-block" type="submit">

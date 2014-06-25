@@ -53,15 +53,17 @@ public class IngresarInstitucionServlet extends HttpServlet {
         nuevaInstitucion.setNombre(nombre);
         nuevaInstitucion.setPais(pais);
         InstitucionDAO agregar= new InstitucionDAO();
-        agregar.agregarInstitucion(nuevaInstitucion);
-        
-        response.setHeader("Location",url);
-//
-//        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
-//        dispatcher.forward(request, response); 
-        
-        response.sendRedirect(url);
+       int resultado = agregar.agregarInstitucion(nuevaInstitucion);
+        if(resultado==1){
+          url= "./Principal.jsp?IICorrectamente"; 
+          response.setHeader("Location",url);
+          response.sendRedirect(url);
             
+        }else{
+        url= "./Principal.jsp?IIError";     
+        response.setHeader("Location",url);
+        response.sendRedirect(url);
+        }    
             
     }
 

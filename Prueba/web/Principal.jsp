@@ -97,22 +97,38 @@ if(login == null || tipoUsuario!="2"){
             %>
             <%@include  file="includes/EliminarInstitucion.jsp" %>
             <%
-        }else if (!(request.getParameter("ListarInstituciones")== null)){
+        }else if (request.getParameter("ListarInstituciones")!= null){
             InstitucionDAO nuevo= new InstitucionDAO();
                     
             List insti=nuevo.getInstituciones();
             request.setAttribute("instituciones", insti);
             %>
             <%@include  file="includes/ListarInstituciones.jsp" %>
+            <% }else if (!(request.getParameter("EICorrectamente")== null)){    
+            %>
+            <div class="col-sm-6 col-md-4 col-md-offset-4">
+            <br><br><br>
+            <p class="bg-success">La institucion se elimino correctamente</p>
+            </div>
+            <% }else if (!(request.getParameter("EIError")== null)){    
+            %>
+            <div class="col-sm-6 col-md-4 col-md-offset-4">
+            <br><br><br>
+            <p class="bg-danger">Ocurrio un error al intentar eliminar la institucion</p>
+            </div>
+            <% }else if (!(request.getParameter("IICorrectamente")== null)){    
+            %>
+            <div class="col-sm-6 col-md-4 col-md-offset-4">
+            <br><br><br>
+            <p class="bg-success">La institución se agrego correctamente</p>
+            </div>
+            <% }else if (!(request.getParameter("IIError")== null)){    
+            %>
+            <div class="col-sm-6 col-md-4 col-md-offset-4">
+            <br><br><br>
+            <p class="bg-danger">La institución no se pudo agregar</p>
+            </div>
             <% }%>
-       <div id="page">
-            <p>
-<!--                <div align="center">
-                    <iframe name="destino" width="880" height="600" align="middle" frameborder="0" src="includes/InformacionSoftware.jsp">
-                    </iframe>          
-                </div>-->
-            </p>
-        </div>
         
     </div>
     </div>    
