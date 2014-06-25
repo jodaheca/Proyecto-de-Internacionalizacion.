@@ -67,11 +67,11 @@ public class loginServlet extends HttpServlet {
                     session.setAttribute("login", "true");
 
                 if(lg.getPermiso() == 3){
-                    session.setAttribute("tipoUsuario",3);
+                    session.setAttribute("tipoUsuario","3");
                     RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/PrincipalEstudiante.jsp");
                     dispatcher.forward(request, response); 
                 }else if(lg.getPermiso() == 2){
-                    session.setAttribute("tipoUsuario",2);
+                    session.setAttribute("tipoUsuario","2");
                      RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Principal.jsp");
                     dispatcher.forward(request, response); 
                 }

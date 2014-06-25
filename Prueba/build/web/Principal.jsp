@@ -8,6 +8,18 @@
 <%@page import="udea.drai.intercambio.dao.InstitucionDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%
+HttpSession sesionOk =request.getSession();
+String login = (String)sesionOk.getAttribute("login");
+String tipoUsuario=(String)sesionOk.getAttribute("tipoUsuario");
+System.out.println("El estado del login es= " +login);
+System.out.println("El tipo de usuario es= " +tipoUsuario);
+if(login == null || tipoUsuario!="2"){
+    //redireccionamos a la pagina del login
+ %>
+   <jsp:forward page="index.jsp" />
+  
+ <% } %>
 <html>
     <head>
          <meta name="description" content="">
