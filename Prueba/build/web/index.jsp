@@ -8,7 +8,7 @@
 <head>
     <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Información Personal</title>
+<title>Login</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
 <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <link href="css/logo-nav.css" rel="stylesheet" type="text/css" />

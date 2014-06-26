@@ -39,7 +39,7 @@ public class InstitucionDAO {
         }catch(Exception ex){
             System.out.println("Error al ingresar una nueva Institucion! Error: "+ex);
             return 2;        
-        }
+    }
     }
     public List<Institucion> getInstituciones(){
         List inst= new ArrayList();
